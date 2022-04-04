@@ -25,8 +25,11 @@ public class CarController {
         carList.add(new Car("Porsche", 5, "Minivan"));
     }
 
-    @Autowired
-    private CarService carService;
+    private final CarService carService;
+
+    public CarController(CarService carService) {
+        this.carService = carService;
+    }
 
     @GetMapping("/cars")
     public String listCar(ModelMap model, HttpServletRequest request) {
